@@ -20,4 +20,4 @@ You can check related commits for every steps
 - mongoose
 - mongoose-encryption
 - md5
-
+- **bcrypt**
