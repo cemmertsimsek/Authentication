@@ -1,3 +1,4 @@
+require("dotenv").config(); //  .env
 const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
@@ -22,8 +23,10 @@ const userSchema = new mongoose.Schema({
   password: String,
 });
 
-const secret = "Thisisourlittlesecret.";
-userSchema.plugin(encrypt, { secret: secret, encryptedFields: ["password"] });
+userSchema.plugin(encrypt, {
+  secret: process.env.SECRET,
+  encryptedFields: ["password"],
+});
 // we need to add our encrypt package as a plugin.
 
 //It's important to add this plugin before we create out mongoose model(below). Because we passing in the userSchema as a parameter to create a new mongoose model which is User model
